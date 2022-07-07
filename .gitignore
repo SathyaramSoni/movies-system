@@ -1,0 +1,8 @@
+
+# Dependency directories
+node_modules/
+
+# angular cache
+.angular
+
+package-lock.json

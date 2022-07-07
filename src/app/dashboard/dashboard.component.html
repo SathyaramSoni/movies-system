@@ -1,0 +1,44 @@
+<div class="category-main">
+  <div class="category">
+    <div class="cat-header">
+      <h2>Upcoming movies</h2>
+      <a (click)="refreshMovies('UM')">Refresh</a>
+    </div>
+
+    <div class="card-container home-loading" *ngIf="loadingCatA">
+      <ngx-shimmer-loading
+        *ngFor="let s of shimmer"
+        [shape]="'rect'"
+        [width]="'350px'"
+        [height]="'100px'"
+      ></ngx-shimmer-loading>
+    </div>
+
+    <div *ngIf="!loadingCatA" class="card-container">
+      <div class="card" *ngFor="let movie of allMoviesCategoryA$ | async">
+        {{ movie.title }}
+      </div>
+    </div>
+  </div>
+  <div class="category">
+    <div class="cat-header">
+      <h2>Now Playing movies</h2>
+      <a (click)="refreshMovies('NP')">Refresh</a>
+    </div>
+
+    <div class="card-container home-loading" *ngIf="loadingCatB">
+      <ngx-shimmer-loading
+        *ngFor="let s of shimmer"
+        [shape]="'rect'"
+        [width]="'350px'"
+        [height]="'100px'"
+      ></ngx-shimmer-loading>
+    </div>
+
+    <div *ngIf="!loadingCatB" class="card-container">
+      <div class="card" *ngFor="let movie of allMoviesCategoryB$ | async">
+        {{ movie.title }}
+      </div>
+    </div>
+  </div>
+</div>

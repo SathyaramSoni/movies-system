@@ -1,0 +1,22 @@
+<div class="card-container home-loading" *ngIf="loading">
+  <ngx-shimmer-loading
+    *ngFor="let s of shimmer"
+    [shape]="'rect'"
+    [width]="'350px'"
+    [height]="'100px'"
+  ></ngx-shimmer-loading>
+</div>
+
+<div
+  *ngIf="!loading"
+  class="card-container home-main-grid"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="debouncedScrollHandler($event)"
+  [scrollWindow]="false"
+>
+  <div class="card" *ngFor="let movie of allMovies$ | async">
+    {{ movie.title }}
+  </div>
+</div>
